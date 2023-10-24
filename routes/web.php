@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CountryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('country.store');
 });
 
 Route::get('/colombia', function () {
@@ -36,3 +37,31 @@ Route::get('/mexico', function () {
 Route::get('/brasil', function () {
     return view('brasil');
 });
+Route::get('/app', function () {
+    return view('layouts/app');
+});
+
+
+//Rutas de controlador para gestionar paises:
+//En su orden: get, post
+//Revise la lógica y el nombre (name) de la ruta al final:
+
+Route::get('/country', [CountryController::class, 'index'])->name('country.index');
+Route::post('/country', [CountryController::class, 'store'])->name('country.store');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Route::get('/country/edit/{id}', [CountryController::class, 'actionEdit'])->name('country.action.edit');
+//Route::put('/country/{id}', [CountryController::class, 'edit'])->name('country.edit');
